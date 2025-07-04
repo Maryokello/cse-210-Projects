@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 class Program
 {
@@ -86,41 +87,108 @@ class Program
 
             string playAgain = "yes";
 
-        while (playAgain.ToLower() == "yes")
-        {
-            // Generate a new random number each time
-            Random randomGenerator = new Random();
-            int number = randomGenerator.Next(1, 101);
-
-            int guessCount = 0;
-            int guessNumber = -1;
-
-            Console.Write("Guess the magic number between 1 and 100: ");
-
-            // Keep looping until the user guesses correctly
-            while (guessNumber != number)
+            while (playAgain.ToLower() == "yes")
             {
-                guessNumber = int.Parse(Console.ReadLine());
-                guessCount++;
+                // Generate a new random number each time
+                Random randomGenerator = new Random();
+                int number = randomGenerator.Next(1, 101);
 
-                if (guessNumber > number)
+                int guessCount = 0;
+                int guessNumber = -1;
+
+                Console.Write("Guess the magic number between 1 and 100: ");
+
+                // Keep looping until the user guesses correctly
+                while (guessNumber != number)
                 {
-                    Console.WriteLine("Lower!");
+                    guessNumber = int.Parse(Console.ReadLine());
+                    guessCount++;
+
+                    if (guessNumber > number)
+                    {
+                        Console.WriteLine("Lower!");
+                    }
+                    else if (guessNumber < number)
+                    {
+                        Console.WriteLine("Higher!");
+                    }
                 }
-                else if (guessNumber < number)
+
+                Console.WriteLine($"You guessed it in {guessCount} attempts!");
+
+                // Ask to play again
+                Console.Write("Do you want to play again? (yes/no): ");
+                playAgain = Console.ReadLine();
+            }
+
+            Console.WriteLine("Thanks for playing!");
+            Console.WriteLine("Hello World! This is the Exercise4 Project.");
+
+            List<int> numbers = new List<int>();
+            int userInput = -1;  // Start with a non-zero number to enter the loop
+
+
+            while (userInput != 0)
+            {
+                Console.Write("Enter a number (0 to stop): ");
+                string input = Console.ReadLine();
+                userInput = int.Parse(input);
+
+                if (userInput != 0)
                 {
-                    Console.WriteLine("Higher!");
+                    numbers.Add(userInput);
                 }
             }
 
-            Console.WriteLine($"You guessed it in {guessCount} attempts!");
+            {
 
-            // Ask to play again
-            Console.Write("Do you want to play again? (yes/no): ");
-            playAgain = Console.ReadLine();
+                int sum = 0;
+                foreach (int number in numbers)
+                {
+                    sum += number;
+                }
+                Console.WriteLine($"The total sum is: {sum}");
+
+                int average = 0;
+
+                if (numbers.Count > 0)
+                {
+                    average = sum / numbers.Count;
+                }
+                else
+                {
+                    average = 0;
+                }
+
+                Console.WriteLine($"The average is: {average}");
+
+               
+
+        int max = 0;
+
+        if (numbers.Count > 0)
+        {
+            max = numbers.Max();  // Use LINQ to get max value
+        }
+        else
+        {
+            max = 0;  // Or handle as needed
         }
 
-        Console.WriteLine("Thanks for playing!");
+        Console.WriteLine($"The max number is: {max}");
     }
-   } 
-   }
+}
+
+
+            } // closes Main()
+        }  // closes Program class
+
+
+
+
+        
+
+        
+        
+    
+    
