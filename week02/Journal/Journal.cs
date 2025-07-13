@@ -1,50 +1,50 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.Json;
 
 public class Journal
 {
-    private List<Entry> _entries = new List<Entry>();
+    public List<Entry> Entries { get; set; } = new();
 
-    public void AddEntry(Entry newEntry)
+    public void AddEntry(Entry entry)
     {
-        _entries.Add(newEntry);
+        Entries.Add(entry);
     }
 
     public void DisplayAll()
     {
-        foreach (Entry entry in _entries)
+        if (Entries.Count == 0)
+        {
+            Console.WriteLine("No journal entries yet.");
+            return;
+        }
+
+        Console.WriteLine("\n--- Journal Entries ---");
+        foreach (var entry in Entries)
         {
             entry.Display();
         }
     }
 
-    public void SaveToFile(string file)
+    public void SaveToFile(string filename)
     {
-        using (StreamWriter outputFile = new StreamWriter(file))
-        {
-            foreach (Entry entry in _entries)
-            {
-                outputFile.WriteLine($"{entry._date}|{entry._promptText}|{entry._entryText}");
-            }
-        }
+        string json = JsonSerializer.Serialize(Entries, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(filename, json);
+        Console.WriteLine("Journal saved to JSON successfully.");
     }
 
-    public void LoadFromFile(string file)
+    public void LoadFromFile(string filename)
     {
-        _entries.Clear();
-        string[] lines = File.ReadAllLines(file);
-
-        foreach (string line in lines)
+        if (File.Exists(filename))
         {
-            string[] parts = line.Split("|");
-            Entry entry = new Entry
-            {
-                _date = parts[0],
-                _promptText = parts[1],
-                _entryText = parts[2]
-            };
-            _entries.Add(entry);
+            string json = File.ReadAllText(filename);
+            Entries = JsonSerializer.Deserialize<List<Entry>>(json) ?? new();
+            Console.WriteLine("Journal loaded from JSON successfully.");
+        }
+        else
+        {
+            Console.WriteLine("File not found.");
         }
     }
 }

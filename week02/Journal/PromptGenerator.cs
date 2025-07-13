@@ -3,19 +3,20 @@ using System.Collections.Generic;
 
 public class PromptGenerator
 {
-    private List<string> _prompts = new List<string>
+    private List<string> _prompts = new()
     {
-        "What made you smile today?",
-        "What did you learn today?",
-        "What challenge did you face?",
-        "Who inspired you today?",
-        "What are you grateful for?"
+        "Who was the most interesting person I interacted with today?",
+        "What was the best part of my day?",
+        "How did I see the hand of the Lord in my life today?",
+        "What was the strongest emotion I felt today?",
+        "If I had one thing I could do over today, what would it be?"
     };
+
+    private Random _random = new();
 
     public string GetRandomPrompt()
     {
-        Random rand = new Random();
-        int index = rand.Next(_prompts.Count);
+        int index = _random.Next(_prompts.Count);
         return _prompts[index];
     }
 }
