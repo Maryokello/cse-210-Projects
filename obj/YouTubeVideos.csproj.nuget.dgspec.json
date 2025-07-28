@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\OneDrive - Action Against Hunger USA\\Documents\\Mary\\BYU\\CSE210\\YouTubeVideos\\YouTubeVideos.csproj": {}
+    "C:\\Users\\User\\OneDrive - Action Against Hunger USA\\Documents\\Mary\\BYU\\CSE210\\cse-210-Projects\\YouTubeVideos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\OneDrive - Action Against Hunger USA\\Documents\\Mary\\BYU\\CSE210\\YouTubeVideos\\YouTubeVideos.csproj": {
+    "C:\\Users\\User\\OneDrive - Action Against Hunger USA\\Documents\\Mary\\BYU\\CSE210\\cse-210-Projects\\YouTubeVideos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\OneDrive - Action Against Hunger USA\\Documents\\Mary\\BYU\\CSE210\\YouTubeVideos\\YouTubeVideos.csproj",
+        "projectUniqueName": "C:\\Users\\User\\OneDrive - Action Against Hunger USA\\Documents\\Mary\\BYU\\CSE210\\cse-210-Projects\\YouTubeVideos.csproj",
         "projectName": "YouTubeVideos",
-        "projectPath": "C:\\Users\\User\\OneDrive - Action Against Hunger USA\\Documents\\Mary\\BYU\\CSE210\\YouTubeVideos\\YouTubeVideos.csproj",
+        "projectPath": "C:\\Users\\User\\OneDrive - Action Against Hunger USA\\Documents\\Mary\\BYU\\CSE210\\cse-210-Projects\\YouTubeVideos.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\OneDrive - Action Against Hunger USA\\Documents\\Mary\\BYU\\CSE210\\YouTubeVideos\\obj\\",
+        "outputPath": "C:\\Users\\User\\OneDrive - Action Against Hunger USA\\Documents\\Mary\\BYU\\CSE210\\cse-210-Projects\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
