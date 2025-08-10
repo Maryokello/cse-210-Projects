@@ -28,6 +28,17 @@ public class ChecklistGoal : Goal
 
     public override string GetDetailsString()
     {
-        return $"{_shortName}: {_description} (Progress: {_amountCompleted}/{_target}) (Points: {_points}, Bonus: {_bonus})";
+        var status = _bonusAwarded ? "[X]" : "[ ]";
+        return $"{status} {_shortName} - {_description} (Progress: {_amountCompleted}/{_target}) ({_points} pts, bonus { _bonus})";
     }
+
+    public override string ToDataString()
+    {
+        // Checklist|shortName|description|points|amountCompleted|target|bonus|bonusAwarded
+        return $"Checklist|{_shortName}|{_description}|{_points}|{_amountCompleted}|{_target}|{_bonus}|{_bonusAwarded}";
+    }
+
+    // helpers for loading
+    public void SetAmountCompleted(int n) => _amountCompleted = n;
+    public void ForceBonusAwarded() => _bonusAwarded = true;
 }

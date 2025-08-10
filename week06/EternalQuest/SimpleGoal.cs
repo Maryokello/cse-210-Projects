@@ -1,3 +1,4 @@
+// Creativity: Added a simple leveling system (level = score / 500) and gamification features (save/load, bonuses) — documented for submission.
 public class SimpleGoal : Goal
 {
     private bool _isComplete;
@@ -19,8 +20,15 @@ public class SimpleGoal : Goal
 
     public override string GetDetailsString()
     {
-        return base.GetDetailsString() + (_isComplete ? " [Completed]" : " [Incomplete]");
+        return ($"[" + (_isComplete ? "X" : " ") + "] " + _shortName + " - " + _description + " (" + _points + " pts)");
     }
 
-    public bool IsComplete() => _isComplete;
+    public override string ToDataString()
+    {
+        // Simple|shortName|description|points|isComplete
+        return $"Simple|{_shortName}|{_description}|{_points}|{_isComplete}";
+    }
+
+    // helper methods for loading
+    public void ForceComplete() => _isComplete = true;
 }
